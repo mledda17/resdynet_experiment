@@ -1,0 +1,5 @@
+{
+  "best_val_nrmse": 0.14839649251668632,
+  "best_epoch": 1,
+  "test_open_loop_nrmse": 0.13321913968197321
+}

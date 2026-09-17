@@ -1,0 +1,4 @@
+model,num_seeds,total_parameters,trainable_parameters,best_val_nrmse_mean,best_val_nrmse_std,best_epoch_mean,best_epoch_std,final_val_nrmse_mean,final_val_nrmse_std,test_nrmse_mean,test_nrmse_std,training_time_sec_mean,training_time_sec_std,avg_training_time_per_epoch_sec_mean,avg_training_time_per_epoch_sec_std
+Random,1,27273,27273,1.1892563986780993,0.0,1.0,0.0,1.5773060629988478,0.0,1.0486045702649072,0.0,1.2826082500105258,0.0,0.6413041250052629,0.0
+N4SID-Joint,1,27273,27273,0.5877139302058413,0.0,0.0,0.0,0.5887000245207312,0.0,0.8071525653146508,0.0,1.2826082500105258,0.0,0.6413041250052629,0.0
+N4SID-Frozen,1,27273,26392,0.5877139302058413,0.0,0.0,0.0,0.6651606751822143,0.0,0.8071525653146508,0.0,1.2826082500105258,0.0,0.6413041250052629,0.0

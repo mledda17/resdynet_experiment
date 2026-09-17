@@ -1,0 +1,3 @@
+seed,model,best_val_nrmse,best_epoch,final_val_nrmse,test_nrmse,avg_training_time_per_epoch_sec,comparison
+0,ResDyNet,1.1263934497160195,0,1.3096146642317605,1.1569650429614504,0.3432500210037688,A_same_width
+0,Plain,1.3513757861631766,0,1.41989648563885,1.0905336295849246,0.3432500210037688,A_same_width

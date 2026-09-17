@@ -1,0 +1,8 @@
+{
+  "best_val_nrmse": 0.14839649251668632,
+  "best_epoch": 1,
+  "test_open_loop_nrmse": 0.13321913968197321,
+  "checkpoint": "results/end_to_end_cascaded_tanks_smoke/checkpoints/resdynet_best.pt",
+  "checkpoint_epoch": 1,
+  "checkpoint_val_nrmse": 0.14839649251668632
+}

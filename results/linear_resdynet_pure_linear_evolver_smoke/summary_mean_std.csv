@@ -1,0 +1,11 @@
+metric,mean,std
+test_nrmse,1.0065718685926415,0.0
+test_rmse,9.070602861733983,0.0
+matched_eig_mean_abs_error,0.5192645316839485,0.0
+spectral_radius_A_f,0.12558961108934644,0.0
+fro_Af_minus_Atrue_coordinate_dependent,1.616778150877718,0.0
+T_cond,290.9229984704117,0.0
+affine_calibration_nrmse,0.5765778879527722,0.0
+affine_test_nrmse,0.6615062197648313,0.0
+similarity_A_error,39.47828137458522,0.0
+similarity_B_error,0.8762880168663244,0.0

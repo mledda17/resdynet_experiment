@@ -1,0 +1,10 @@
+{
+  "selected_order": 3,
+  "selection_metric": "validation_open_loop_nrmse",
+  "test_open_loop_rmse": 0.09631927741460723,
+  "test_open_loop_nrmse": 1.0785323780411804,
+  "test_bfr": -7.965760774527553,
+  "spectral_radius": 0.9967711711952224,
+  "stable": true,
+  "eigenvalues": "0.10368396+0j;0.99677117+0j;0.95950583+0j"
+}

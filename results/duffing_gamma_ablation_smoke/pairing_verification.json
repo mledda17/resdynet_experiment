@@ -1,0 +1,18 @@
+{
+  "profiles": [
+    "uniform",
+    "short_term",
+    "long_term"
+  ],
+  "gamma_sums": {
+    "uniform": 1.0,
+    "short_term": 1.0,
+    "long_term": 1.0
+  },
+  "max_initial_parameter_difference": 0.0,
+  "max_initial_prediction_difference": 0.0,
+  "minibatch_schedules_identical": true,
+  "differing_configuration_fields": [
+    "gamma_h"
+  ]
+}

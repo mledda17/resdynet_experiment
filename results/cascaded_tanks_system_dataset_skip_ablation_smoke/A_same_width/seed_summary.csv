@@ -1,0 +1,3 @@
+seed,model,best_val_nrmse,best_val_nrmse_percent,best_epoch,final_val_nrmse,final_val_nrmse_percent,test_nrmse,test_nrmse_percent,max_shared_initial_parameter_difference,copied_shared_initial_parameters,avg_training_time_per_epoch_sec,total_parameters,trainable_parameters,comparison
+0,ResDyNet,0.062488070656955046,6.248807065695504,1,0.062488070656955046,6.248807065695504,0.06612616839091981,6.612616839091981,0.0,21272,3.691821499989601,21513,21513,A_same_width
+0,Plain,0.2638314711877411,26.383147118774108,1,0.2638314711877411,26.383147118774108,0.24972693790895653,24.972693790895654,0.0,21272,3.691821499989601,21272,21272,A_same_width

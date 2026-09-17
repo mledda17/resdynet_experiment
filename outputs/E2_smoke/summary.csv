@@ -1,0 +1,3 @@
+seed,method,best_val_nrmse,final_val_nrmse,final_test_nrmse,nonlinear_parameters
+0,ResDyNet-ResidualEvolver,0.5877139302058413,0.7162761143135725,0.5400763376950339,10383
+0,ResDyNet-MLPEvolver,0.5531093991226173,0.5752157733623461,0.42429826281313454,10424

@@ -1,0 +1,2 @@
+seed,best_epoch,train_rmse,train_nrmse,val_rmse,val_nrmse,test_rmse,test_nrmse,eig_mean_abs_error,spectral_radius_A_f,spectral_radius_A_true,A_f_stable,fro_Af_minus_Atrue_coordinate_dependent,T_cond,latent_test_fit_nrmse,similarity_A_error,similarity_B_error,similarity_C_error
+0,2,5.2937172911983215,0.54446857288841,2.3297339786628086,0.49550100436673833,4.808931512608019,0.5609529114401344,0.5615710871014619,0.41236082200653856,0.7,True,2.0943854448229993,80.12983531747523,0.5649384840199324,24.914656439862068,1.21341570194575,31.010080884007813

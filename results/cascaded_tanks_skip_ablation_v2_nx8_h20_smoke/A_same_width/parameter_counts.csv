@@ -1,0 +1,3 @@
+model,total_parameters,trainable_parameters,relative_difference
+ResDyNet,21513,21513,0.0
+Plain,21272,21272,0.011202528703574582

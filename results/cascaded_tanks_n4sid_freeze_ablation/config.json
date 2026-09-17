@@ -1,0 +1,56 @@
+{
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "epochs": 60,
+  "batch_size": 128,
+  "eval_batch_size": 256,
+  "learning_rate": 0.001,
+  "clip_grad_norm": 1.0,
+  "val_fraction": 0.2,
+  "linear_order": 6,
+  "latent_dim": 8,
+  "history_length": 50,
+  "horizon": 50,
+  "num_blocks": 4,
+  "stream_dim": null,
+  "hidden_width": 64,
+  "hidden_layers": 2,
+  "evolver_hidden_width": 64,
+  "n4sid_block_rows": 10,
+  "no_linear_state_scaling": false,
+  "shuffle_seed_base": 30000,
+  "epoch0_tolerance": 1e-10,
+  "dtype": "float64",
+  "device": "cpu",
+  "output_dir": "results/cascaded_tanks_n4sid_freeze_ablation",
+  "ny": 1,
+  "nu": 1,
+  "standalone_n4sid_validation_nrmse": 0.5877139302058413,
+  "parameter_counts": [
+    {
+      "model": "Random",
+      "total_parameters": 27273,
+      "trainable_parameters": 27273
+    },
+    {
+      "model": "N4SID-Joint",
+      "total_parameters": 27273,
+      "trainable_parameters": 27273
+    },
+    {
+      "model": "N4SID-Frozen",
+      "total_parameters": 27273,
+      "trainable_parameters": 26392
+    }
+  ]
+}

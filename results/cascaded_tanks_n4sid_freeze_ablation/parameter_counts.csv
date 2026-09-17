@@ -1,0 +1,4 @@
+model,total_parameters,trainable_parameters
+Random,27273,27273
+N4SID-Joint,27273,27273
+N4SID-Frozen,27273,26392

@@ -1,0 +1,38 @@
+{
+  "comparison": "both",
+  "seeds": [
+    0
+  ],
+  "epochs": 1,
+  "batch_size": 128,
+  "eval_batch_size": 256,
+  "learning_rate": 0.001,
+  "clip_grad_norm": 1.0,
+  "val_fraction": 0.2,
+  "latent_dim": 8,
+  "history_length": 10,
+  "horizon": 20,
+  "num_blocks": 4,
+  "stream_dim": null,
+  "hidden_layers": 2,
+  "full_hidden_width": 64,
+  "full_evolver_hidden_width": 64,
+  "plain_hidden_width": 56,
+  "plain_evolver_hidden_width": 80,
+  "matched_plain_hidden_width": 56,
+  "matched_plain_evolver_hidden_width": 80,
+  "shuffle_seed_base": 20000,
+  "dtype": "float64",
+  "device": "cpu",
+  "output_dir": "results/cascaded_tanks_skip_ablation_v2_nx8_h20_smoke",
+  "comparison_label": "B_parameter_matched",
+  "total_parameter_counts": {
+    "ResDyNet": 21513,
+    "Plain": 21512
+  },
+  "trainable_parameter_counts": {
+    "ResDyNet": 21513,
+    "Plain": 21512
+  },
+  "relative_parameter_difference": 4.6483521591595777e-05
+}

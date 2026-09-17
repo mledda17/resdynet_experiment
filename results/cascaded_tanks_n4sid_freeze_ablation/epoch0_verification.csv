@@ -1,0 +1,11 @@
+seed,joint_frozen_epoch0_max_abs_prediction_diff,joint_linear_requires_grad,frozen_linear_requires_grad
+0,0.0,"{""encoder.S"": true, ""evolver.S"": true, ""decoder.S"": true}","{""encoder.S"": false, ""evolver.S"": false, ""decoder.S"": false}"
+1,0.0,"{""encoder.S"": true, ""evolver.S"": true, ""decoder.S"": true}","{""encoder.S"": false, ""evolver.S"": false, ""decoder.S"": false}"
+2,0.0,"{""encoder.S"": true, ""evolver.S"": true, ""decoder.S"": true}","{""encoder.S"": false, ""evolver.S"": false, ""decoder.S"": false}"
+3,0.0,"{""encoder.S"": true, ""evolver.S"": true, ""decoder.S"": true}","{""encoder.S"": false, ""evolver.S"": false, ""decoder.S"": false}"
+4,0.0,"{""encoder.S"": true, ""evolver.S"": true, ""decoder.S"": true}","{""encoder.S"": false, ""evolver.S"": false, ""decoder.S"": false}"
+5,0.0,"{""encoder.S"": true, ""evolver.S"": true, ""decoder.S"": true}","{""encoder.S"": false, ""evolver.S"": false, ""decoder.S"": false}"
+6,0.0,"{""encoder.S"": true, ""evolver.S"": true, ""decoder.S"": true}","{""encoder.S"": false, ""evolver.S"": false, ""decoder.S"": false}"
+7,0.0,"{""encoder.S"": true, ""evolver.S"": true, ""decoder.S"": true}","{""encoder.S"": false, ""evolver.S"": false, ""decoder.S"": false}"
+8,0.0,"{""encoder.S"": true, ""evolver.S"": true, ""decoder.S"": true}","{""encoder.S"": false, ""evolver.S"": false, ""decoder.S"": false}"
+9,0.0,"{""encoder.S"": true, ""evolver.S"": true, ""decoder.S"": true}","{""encoder.S"": false, ""evolver.S"": false, ""decoder.S"": false}"

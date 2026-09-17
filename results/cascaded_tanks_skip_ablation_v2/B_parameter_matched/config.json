@@ -1,0 +1,36 @@
+{
+  "comparison": "both",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "epochs": 60,
+  "batch_size": 128,
+  "eval_batch_size": 256,
+  "learning_rate": 0.001,
+  "clip_grad_norm": 1.0,
+  "val_fraction": 0.2,
+  "latent_dim": 8,
+  "history_length": 50,
+  "horizon": 50,
+  "num_blocks": 4,
+  "stream_dim": null,
+  "hidden_layers": 2,
+  "full_hidden_width": 64,
+  "full_evolver_hidden_width": 64,
+  "plain_hidden_width": 38,
+  "plain_evolver_hidden_width": 124,
+  "shuffle_seed_base": 20000,
+  "dtype": "float64",
+  "device": "cpu",
+  "output_dir": "results/cascaded_tanks_skip_ablation_v2",
+  "comparison_label": "B_parameter_matched",
+  "parameter_counts": {
+    "ResDyNet": 27273,
+    "Plain": 27276
+  },
+  "relative_parameter_difference": 0.00010999890001099989
+}

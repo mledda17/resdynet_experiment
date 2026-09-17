@@ -1,0 +1,9 @@
+seed,method,threshold,hit,epoch,updates,wall_time_sec
+0,ResDyNet-ResidualEvolver,0.4,False,,,
+0,ResDyNet-ResidualEvolver,0.3,False,,,
+0,ResDyNet-ResidualEvolver,0.25,False,,,
+0,ResDyNet-ResidualEvolver,0.2,False,,,
+0,ResDyNet-MLPEvolver,0.4,False,,,
+0,ResDyNet-MLPEvolver,0.3,False,,,
+0,ResDyNet-MLPEvolver,0.25,False,,,
+0,ResDyNet-MLPEvolver,0.2,False,,,

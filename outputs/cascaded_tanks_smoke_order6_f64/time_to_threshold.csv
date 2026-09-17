@@ -1,0 +1,7 @@
+seed,method,threshold,hit,epoch,updates,wall_time_sec
+0,ResDyNet-Random,0.05,False,,,
+0,ResDyNet-Random,0.03,False,,,
+0,ResDyNet-Random,0.02,False,,,
+0,ResDyNet-LinearInit,0.05,False,,,
+0,ResDyNet-LinearInit,0.03,False,,,
+0,ResDyNet-LinearInit,0.02,False,,,

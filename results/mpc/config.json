@@ -1,0 +1,22 @@
+{
+  "system": "rlc",
+  "checkpoint": "E5/checkpoints/seed_0_best.pt",
+  "output_dir": "results/mpc",
+  "simulation_steps": 180,
+  "prediction_horizon": 25,
+  "q_y": 20.0,
+  "r_u": 0.05,
+  "s_du": 0.5,
+  "u_min": -2.0,
+  "u_max": 2.0,
+  "reference_value": 0.6,
+  "initial_state": [
+    0.0,
+    0.0
+  ],
+  "osqp_eps_abs": 1e-05,
+  "osqp_eps_rel": 1e-05,
+  "osqp_max_iter": 10000,
+  "dtype": "float32",
+  "device": "cpu"
+}

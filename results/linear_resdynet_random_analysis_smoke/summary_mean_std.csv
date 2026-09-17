@@ -1,0 +1,8 @@
+metric,mean,std
+test_nrmse,0.5609529114401344,0.0
+eig_mean_abs_error,0.5615710871014619,0.0
+similarity_A_error,24.914656439862068,0.0
+similarity_B_error,1.21341570194575,0.0
+similarity_C_error,31.010080884007813,0.0
+T_cond,80.12983531747523,0.0
+latent_test_fit_nrmse,0.5649384840199324,0.0

@@ -1,0 +1,78 @@
+{
+  "dataset": "linear_order3_dataset.mat",
+  "output_dir": "results/linear_resdynet_pure_linear_evolver",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "epochs": 80,
+  "batch_size": 256,
+  "eval_batch_size": 512,
+  "learning_rate": 0.001,
+  "clip_grad_norm": 1.0,
+  "history_length": 20,
+  "horizon": 50,
+  "latent_dim": 3,
+  "hidden_width": 64,
+  "hidden_layers": 2,
+  "num_blocks": 4,
+  "stream_dim": null,
+  "evolver_hidden_width": 64,
+  "val_fraction": 0.2,
+  "shuffle_seed_base": 50000,
+  "dtype": "float64",
+  "device": "cpu",
+  "data_source": "loaded:linear_order3_dataset.mat",
+  "A_true": [
+    [
+      0.7,
+      1.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.5,
+      1.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.3
+    ]
+  ],
+  "B_true": [
+    [
+      1.0
+    ],
+    [
+      1.0
+    ],
+    [
+      1.0
+    ]
+  ],
+  "C_true": [
+    [
+      1.0,
+      1.0,
+      1.0
+    ]
+  ],
+  "D_true": [
+    [
+      0.0
+    ]
+  ],
+  "train_samples": 8000,
+  "val_samples": 2000,
+  "test_samples": 3000,
+  "evolver": "PureLinearEvolver: x_next = S_f [x; u], no nonlinear branch"
+}

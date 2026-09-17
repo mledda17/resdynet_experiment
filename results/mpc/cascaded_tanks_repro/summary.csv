@@ -1,0 +1,3 @@
+controller,tracking_rmse,accumulated_mpc_cost,input_constraint_violations,output_constraint_violations,state_projection_count,avg_qp_solve_time_sec,max_qp_solve_time_sec,checkpoint_epoch,checkpoint_val_nrmse
+linear,10.811579822975714,11804303.679291777,0,40,0,0.05411070573645702,0.08404695801436901,20,0.2891371842547012
+resdynet_ltv,5.277997367686165,77126.85978723725,0,25,0,0.0562789500112558,0.0900060829881113,20,0.2891371842547012
