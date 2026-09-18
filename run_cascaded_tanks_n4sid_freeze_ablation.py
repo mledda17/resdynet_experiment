@@ -28,6 +28,11 @@ from run_cascaded_tanks_ablation import (
 
 
 VARIANTS = ("Random", "N4SID-Joint", "N4SID-Frozen")
+VARIANT_NAMES = {"random": "Random", "joint": "N4SID-Joint", "frozen": "N4SID-Frozen"}
+
+
+def selected_variants(args) -> tuple[str, ...]:
+    return tuple(VARIANT_NAMES[name] for name in args.variants)
 
 
 def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
@@ -265,30 +270,35 @@ def save_backbone_json(path: Path, seed: int, initial: dict[str, Tensor], final:
 
 
 def make_models(args, ny, nu, seed, dtype, device, linear) -> dict[str, ResDyNet]:
-    models = {
-        "Random": make_model(args, ny, nu, seed, dtype, device, linear=None),
-        "N4SID-Joint": make_model(args, ny, nu, seed, dtype, device, linear=linear),
-        "N4SID-Frozen": make_model(args, ny, nu, seed, dtype, device, linear=linear),
+    factories = {
+        "Random": lambda: make_model(args, ny, nu, seed, dtype, device, linear=None),
+        "N4SID-Joint": lambda: make_model(args, ny, nu, seed, dtype, device, linear=linear),
+        "N4SID-Frozen": lambda: make_model(args, ny, nu, seed, dtype, device, linear=linear),
     }
-    freeze_linear_backbone(models["N4SID-Frozen"])
+    models = {name: factories[name]() for name in selected_variants(args)}
+    if "N4SID-Frozen" in models:
+        freeze_linear_backbone(models["N4SID-Frozen"])
     return models
 
 
 def run_seed(args, seed, tensors, ny, nu, dtype, device, linear, output_dir):
     models = make_models(args, ny, nu, seed, dtype, device, linear)
-    epoch0_diff = max_prediction_difference(
-        models["N4SID-Joint"], models["N4SID-Frozen"], tensors["val"], args.eval_batch_size
-    )
     joint_sig = linear_requires_grad_signature(models["N4SID-Joint"])
-    frozen_sig = linear_requires_grad_signature(models["N4SID-Frozen"])
     if any(not v for v in joint_sig.values()):
         raise RuntimeError(f"N4SID-Joint linear branches are not all trainable: {joint_sig}")
-    if any(v for v in frozen_sig.values()):
-        raise RuntimeError(f"N4SID-Frozen linear branches are not all frozen: {frozen_sig}")
-    if epoch0_diff > args.epoch0_tolerance:
-        raise RuntimeError(
-            f"N4SID-Joint and N4SID-Frozen differ at epoch 0: max abs diff={epoch0_diff:.3e}"
+    epoch0_diff = None
+    frozen_sig = None
+    if "N4SID-Frozen" in models:
+        epoch0_diff = max_prediction_difference(
+            models["N4SID-Joint"], models["N4SID-Frozen"], tensors["val"], args.eval_batch_size
         )
+        frozen_sig = linear_requires_grad_signature(models["N4SID-Frozen"])
+        if any(frozen_sig.values()):
+            raise RuntimeError(f"N4SID-Frozen linear branches are not all frozen: {frozen_sig}")
+        if epoch0_diff > args.epoch0_tolerance:
+            raise RuntimeError(
+                f"N4SID-Joint and N4SID-Frozen differ at epoch 0: max abs diff={epoch0_diff:.3e}"
+            )
 
     initial_backbone = extract_backbone(models["N4SID-Joint"], linear.order)
     optimizers = {
@@ -339,7 +349,7 @@ def run_seed(args, seed, tensors, ny, nu, dtype, device, linear, output_dir):
                 )
 
         print(f"Seed {seed:02d} | Epoch {epoch:03d}", flush=True)
-        for name in VARIANTS:
+        for name in selected_variants(args):
             row = epoch_rows[name]
             print(
                 f"{name:<13}: train={row['train_loss']:.6g} "
@@ -383,9 +393,9 @@ def run_seed(args, seed, tensors, ny, nu, dtype, device, linear, output_dir):
     distance_row = backbone_distances(seed, final_backbone, linear, torch.finfo(dtype).eps)
     verification = {
         "seed": seed,
-        "joint_frozen_epoch0_max_abs_prediction_diff": epoch0_diff,
+        "joint_frozen_epoch0_max_abs_prediction_diff": "" if epoch0_diff is None else epoch0_diff,
         "joint_linear_requires_grad": json.dumps(joint_sig),
-        "frozen_linear_requires_grad": json.dumps(frozen_sig),
+        "frozen_linear_requires_grad": "" if frozen_sig is None else json.dumps(frozen_sig),
     }
     return histories, seed_summaries, distance_row, verification
 
@@ -398,7 +408,7 @@ def mean_std(values: list[float]) -> tuple[float, float]:
 def aggregate_summary(seed_rows: list[dict[str, object]], param_rows: list[dict[str, object]]) -> list[dict[str, object]]:
     params_by_model = {row["model"]: row for row in param_rows}
     out = []
-    for model in VARIANTS:
+    for model in params_by_model:
         rows = [r for r in seed_rows if r["model"] == model]
         agg = {
             "model": model,
@@ -421,6 +431,47 @@ def aggregate_summary(seed_rows: list[dict[str, object]], param_rows: list[dict[
     return out
 
 
+def save_tikz_curve_csvs(
+    output_dir: Path,
+    histories: list[dict[str, object]],
+    variants: tuple[str, ...],
+    seeds: list[int],
+    epochs: int,
+) -> None:
+    slugs = {"Random": "random", "N4SID-Joint": "n4sid_joint", "N4SID-Frozen": "n4sid_frozen"}
+    metrics = {
+        "train_loss": "train_loss",
+        "val_loss": "val_loss",
+        "val_nrmse_percent": "val_nrmse",
+    }
+    lookup = {
+        (str(row["model"]), int(row["seed"]), int(row["epoch"])): row
+        for row in histories
+    }
+    per_seed_rows = []
+    mean_std_rows = []
+    for epoch in range(epochs + 1):
+        per_seed: dict[str, object] = {"epoch": epoch}
+        aggregate: dict[str, object] = {"epoch": epoch}
+        for model in variants:
+            slug = slugs[model]
+            for output_metric, source_metric in metrics.items():
+                values = []
+                for seed in seeds:
+                    value = float(lookup[(model, seed, epoch)][source_metric])
+                    if output_metric == "val_nrmse_percent":
+                        value *= 100.0
+                    per_seed[f"{slug}_{output_metric}_seed{seed}"] = value
+                    values.append(value)
+                avg, std = mean_std(values)
+                aggregate[f"{slug}_{output_metric}_mean"] = avg
+                aggregate[f"{slug}_{output_metric}_std"] = std
+        per_seed_rows.append(per_seed)
+        mean_std_rows.append(aggregate)
+    write_csv(output_dir / "epoch_curves_per_seed.csv", per_seed_rows)
+    write_csv(output_dir / "epoch_curves_mean_std.csv", mean_std_rows)
+
+
 def save_plots(output_dir: Path, histories: list[dict[str, object]], distance_rows: list[dict[str, object]], n4sid_ref: float) -> None:
     os.environ.setdefault("MPLCONFIGDIR", "/private/tmp/matplotlib")
     import matplotlib
@@ -436,7 +487,9 @@ def save_plots(output_dir: Path, histories: list[dict[str, object]], distance_ro
     ]
     for key, ylabel, filename in specs:
         fig, ax = plt.subplots(figsize=(8.5, 4.6), constrained_layout=True)
-        for model in VARIANTS:
+        for model in colors:
+            if not any(row["model"] == model for row in histories):
+                continue
             rows = [r for r in histories if r["model"] == model]
             epochs = sorted({int(r["epoch"]) for r in rows})
             means, stds = [], []
@@ -472,7 +525,14 @@ def save_plots(output_dir: Path, histories: list[dict[str, object]], distance_ro
 
 
 def parse_args() -> argparse.Namespace:
-    p = argparse.ArgumentParser(description="3-way Cascaded Tanks ablation: random vs N4SID joint vs N4SID frozen.")
+    p = argparse.ArgumentParser(description="Cascaded Tanks initialization ablation: random, N4SID joint, and optionally N4SID frozen.")
+    p.add_argument(
+        "--variants",
+        nargs="+",
+        choices=tuple(VARIANT_NAMES),
+        default=list(VARIANT_NAMES),
+        help="Variants to run. N4SID joint is required for backbone analysis.",
+    )
     p.add_argument("--seeds", type=int, nargs="+", default=list(range(10)))
     p.add_argument("--epochs", type=int, default=60)
     p.add_argument("--batch-size", type=int, default=128)
@@ -501,6 +561,10 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+    if len(set(args.variants)) != len(args.variants):
+        raise ValueError("--variants must not contain duplicates.")
+    if "joint" not in args.variants:
+        raise ValueError("--variants must include joint because this runner analyzes the trained N4SID backbone.")
     if args.latent_dim < args.linear_order:
         raise ValueError("--latent-dim must be >= --linear-order.")
     dtype = torch.float64 if args.dtype == "float64" else torch.float32
@@ -567,6 +631,7 @@ def main() -> None:
     write_csv(output_dir / "summary_mean_std.csv", aggregate)
     write_csv(output_dir / "n4sid_joint_backbone_distances.csv", distance_rows)
     write_csv(output_dir / "epoch0_verification.csv", verification_rows)
+    save_tikz_curve_csvs(output_dir, all_histories, selected_variants(args), args.seeds, args.epochs)
     save_plots(output_dir, all_histories, distance_rows, n4sid_ref)
     print(f"saved results to {output_dir}", flush=True)
     for row in aggregate:
