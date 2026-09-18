@@ -1,0 +1,15 @@
+training_horizon,seed,model,best_val_nrmse_percent,best_epoch,test_nrmse_percent,total_parameters,trainable_parameters,checkpoint,max_shared_initial_parameter_difference,copied_shared_initial_parameters
+5,0,ResDyNet,0.6532231050006498,97,0.606186327795037,18991,18991,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H5/ResDyNet_seed_0_best.pt,0.0,18822
+5,0,Plain,1.549281701194571,88,1.539594006274857,18822,18822,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H5/Plain_seed_0_best.pt,0.0,18822
+5,1,ResDyNet,0.6437400446853696,97,0.5810405569104791,18991,18991,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H5/ResDyNet_seed_1_best.pt,0.0,18822
+5,1,Plain,1.5428638420414007,87,1.5745725656659006,18822,18822,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H5/Plain_seed_1_best.pt,0.0,18822
+5,2,ResDyNet,0.5865690628164973,92,0.5320172094242968,18991,18991,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H5/ResDyNet_seed_2_best.pt,0.0,18822
+5,2,Plain,1.4703456991942117,97,1.4612021863076137,18822,18822,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H5/Plain_seed_2_best.pt,0.0,18822
+5,3,ResDyNet,0.6114423277538871,92,0.5584432805566838,18991,18991,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H5/ResDyNet_seed_3_best.pt,0.0,18822
+5,3,Plain,1.5364755460710393,90,1.559081539483365,18822,18822,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H5/Plain_seed_3_best.pt,0.0,18822
+5,4,ResDyNet,0.7039725267491839,99,0.6545347125595471,18991,18991,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H5/ResDyNet_seed_4_best.pt,0.0,18822
+5,4,Plain,1.580611980986767,91,1.608757569075072,18822,18822,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H5/Plain_seed_4_best.pt,0.0,18822
+10,0,ResDyNet,0.5395556786444785,87,0.5035161961080823,18991,18991,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H10/ResDyNet_seed_0_best.pt,0.0,18822
+10,0,Plain,2.0652987447341085,84,2.139186100759977,18822,18822,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H10/Plain_seed_0_best.pt,0.0,18822
+10,1,ResDyNet,0.6064117635776295,99,0.5871714049981859,18991,18991,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H10/ResDyNet_seed_1_best.pt,0.0,18822
+10,1,Plain,2.43836515812018,84,2.4917636683153868,18822,18822,results/cascaded_tanks_horizon_ablation_nx6_5seeds_100epochs/checkpoints/H10/Plain_seed_1_best.pt,0.0,18822

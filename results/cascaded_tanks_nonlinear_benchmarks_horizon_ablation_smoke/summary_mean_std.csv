@@ -1,0 +1,3 @@
+training_horizon,model,num_seeds,total_parameters,best_val_nrmse_percent_mean,best_val_nrmse_percent_std,best_epoch_mean,best_epoch_std,test_nrmse_percent_mean,test_nrmse_percent_std
+10,ResDyNet,1,18991,129.19522302754572,0.0,1.0,0.0,99.6667364071974,0.0
+10,Plain,1,18822,129.63595610086034,0.0,1.0,0.0,101.16049137400293,0.0

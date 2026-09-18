@@ -1,0 +1,2 @@
+training_horizon,seed,resdynet_best_val_nrmse_percent,plain_best_val_nrmse_percent,delta_best_val_nrmse_percent,resdynet_test_nrmse_percent,plain_test_nrmse_percent,delta_test_nrmse_percent
+10,0,8.207617032343315,24.00623446632929,15.798617433985974,7.949434510379345,23.82417640798842,15.874741897609077

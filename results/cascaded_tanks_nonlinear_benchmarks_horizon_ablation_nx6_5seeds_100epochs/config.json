@@ -1,0 +1,36 @@
+{
+  "dataset_source": "benchmark",
+  "dataset_path": "results/end_to_end_cascaded_tanks/dataset.npz",
+  "val_fraction": 0.2,
+  "output_dir": "results/cascaded_tanks_nonlinear_benchmarks_horizon_ablation_nx6_5seeds_100epochs",
+  "horizons": [
+    5,
+    10,
+    20,
+    40,
+    80
+  ],
+  "evaluation_horizon": 100,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "epochs": 100,
+  "batch_size": 256,
+  "eval_batch_size": 256,
+  "learning_rate": 0.001,
+  "clip_grad_norm": 1.0,
+  "latent_dim": 6,
+  "history_length": 10,
+  "num_blocks": 4,
+  "stream_dim": null,
+  "hidden_width": 64,
+  "hidden_layers": 2,
+  "evolver_hidden_width": 64,
+  "shuffle_seed_base": 20000,
+  "dtype": "float64",
+  "device": "cpu"
+}

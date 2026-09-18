@@ -1,0 +1,3 @@
+training_horizon,seed,model,best_val_nrmse_percent,best_epoch,test_nrmse_percent,total_parameters,trainable_parameters,checkpoint,max_shared_initial_parameter_difference,copied_shared_initial_parameters
+10,0,ResDyNet,129.19522302754572,1,99.6667364071974,18991,18991,results/cascaded_tanks_nonlinear_benchmarks_horizon_ablation_smoke/checkpoints/H10/ResDyNet_seed_0_best.pt,0.0,18822
+10,0,Plain,129.63595610086034,1,101.16049137400293,18822,18822,results/cascaded_tanks_nonlinear_benchmarks_horizon_ablation_smoke/checkpoints/H10/Plain_seed_0_best.pt,0.0,18822
